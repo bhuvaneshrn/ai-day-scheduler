@@ -28,6 +28,15 @@ const taskSchema = new mongoose.Schema(
       enum: ["pending", "in-progress", "completed", "delayed"],
       default: "pending",
     },
+    scheduledStart: {
+      type: Date,
+    },
+    scheduledEnd: {
+      type: Date,
+    },
+    completedAt: {
+      type: Date,
+    },
   },
   { timestamps: true }
 );
