@@ -1,14 +1,17 @@
 const express = require("express");
-const cors = require("cors");
 
 const app = express();
 
-app.use(cors());
+// middleware
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("AI Day Scheduler backend is running");
+// health check
+app.get("/health", (req, res) => {
+  res.json({ status: "OK" });
 });
 
-module.exports = app;
+module.exports = app; // 🚨 REQUIRED
+const taskRoutes = require("./routes/taskRoutes");
+
+app.use("/api/tasks", taskRoutes);
 
